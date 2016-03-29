@@ -1,5 +1,5 @@
 ## Import
-side <- "atp"
+side <- "wta"
 Data <- import(2012:2015, side)
 df <- Data$Data
 y <- df$Wsets
