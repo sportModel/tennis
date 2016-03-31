@@ -1,7 +1,7 @@
 # Site settings
 title: Tennis
 email: pat5547@gmail.com
-description: A description
+description: Bayesian time-series models for tennis outcomes
 url: "http://sportmodel.github.io/tennis"
 baseurl: ""
 github_username:  sportModel
@@ -9,3 +9,17 @@ github_username:  sportModel
 # Build settings
 markdown: kramdown
 exclude: [psm, data]
+
+# Defaults
+defaults:
+  -
+    scope:
+      type: posts
+    values:
+      layout: post
+      rel: "../../../"
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"

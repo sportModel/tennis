@@ -88,19 +88,15 @@ blockquote {
 /**
  * Code formatting
  */
-pre,
-code {
-  font-size: 15px;
-  border: 1px solid #e8e8e8;
-  border-radius: 3px;
-  background-color: #eef; }
+pre, code {
+  font-size: 15px;}
 
 code {
   padding: 1px 5px; }
 
 pre {
   padding: 8px 12px;
-  overflow-x: scroll; }
+  overflow-x: auto; }
   pre > code {
     border: 0;
     padding-right: 0;
@@ -110,8 +106,8 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(800px - (30px * 2));
-  max-width: calc(800px - (30px * 2));
+    max-width: -webkit-calc(800px - (30px * 2));
+    max-width: calc(800px - (30px * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: 30px;
@@ -234,21 +230,14 @@ pre {
 
 .footer-col-2 {
   width: -webkit-calc(20% - (30px / 2));
-  width: calc(20% - (30px / 2)); }
-
-.footer-col-3 {
-  width: -webkit-calc(45% - (30px / 2));
-  width: calc(45% - (30px / 2)); }
+  width: calc(65% - (30px / 2)); }
 
 @media screen and (max-width: 800px) {
   .footer-col-1,
   .footer-col-2 {
     width: -webkit-calc(50% - (30px / 2));
-    width: calc(50% - (30px / 2)); }
+    width: calc(50% - (30px / 2)); } }
 
-  .footer-col-3 {
-    width: -webkit-calc(100% - (30px / 2));
-    width: calc(100% - (30px / 2)); } }
 @media screen and (max-width: 600px) {
   .footer-col {
     float: none;
@@ -313,7 +302,7 @@ pre {
  * Syntax highlighting styles
  */
 .highlight {
-  background: #fff; }
+  background-color: #ddd; }
   .highlight .c {
     color: #998;
     font-style: italic; }
