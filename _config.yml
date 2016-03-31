@@ -1,0 +1,11 @@
+# Site settings
+title: Tennis
+email: pat5547@gmail.com
+description: A description
+url: "http://sportmodel.github.io/tennis"
+baseurl: ""
+github_username:  sportModel
+
+# Build settings
+markdown: kramdown
+exclude: [psm, data]
