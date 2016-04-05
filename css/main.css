@@ -458,3 +458,7 @@ pre {
     padding-right:4px;
     font-weight: normal;
 }
+
+.print_only, .hidden{
+    display:none;
+}
