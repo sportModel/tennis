@@ -436,3 +436,25 @@ pre {
     color: #008080; }
   .highlight .il {
     color: #099; }
+
+
+.ctable, .ctable td, .ctable th{
+    font-family:"Trebuchet MS",Trebuchet,Verdana,Sans-Serif;
+    font-size:100%;
+    border-collapse:collapse;
+    border-spacing:0;
+    padding:2px
+}
+.ctable{
+    border:1px solid #000000;
+    margin-bottom:20px
+}
+.ctable td{
+    border:1px dotted #E5E5E5;
+}
+.ctable th{
+    background-color:#ddd;
+    padding-left:4px;
+    padding-right:4px;
+    font-weight: normal;
+}
