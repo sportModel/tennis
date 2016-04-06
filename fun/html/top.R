@@ -4,5 +4,6 @@ top <- function(psm, name) {
   Tab$Last12mo <- psm$Delta - psm$Eta[,m-12]
   Tab$Last3mo <- psm$Delta - psm$Eta[,m-3]
   Tab$Overall <- psm$Delta
-  print(htmlTable(Tab, class="ctable"), name=name)
+  Tab <- Tab[order(Tab$Overall, decreasing=TRUE)[1:100],]
+  print(htmlTable(Tab, class="\"sortable ctable\""), name=name)
 }
