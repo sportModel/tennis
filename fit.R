@@ -1,5 +1,5 @@
 ## Import
-side <- "wta"
+side <- "atp"
 Data <- import(2012:2016, side)
 df <- Data$Data
 y <- df$Wsets
@@ -16,7 +16,7 @@ inits <- mapply(FUN, 1:3, SIMPLIFY=FALSE)
 ## Fit
 require(runjags)
 runjags.options(rng.warning=FALSE)
-jagsfit <- run.jags("functions/model.txt", monitor=monitor, data=jData, inits=inits, n.chains=length(inits),
+jagsfit <- run.jags("fun/stat/model.txt", monitor=monitor, data=jData, inits=inits, n.chains=length(inits),
                     method="rjparallel", adapt = 1000, burnin=1000, sample=2000, summarise=FALSE)
 # save(jagsfit, Data, file='mcmc.RData')
 # fit <- jags(data=jData, param=param, model=model, n.chains=3, n.iter=5000, n.burn=2000, DIC=FALSE, n.thin=1)
