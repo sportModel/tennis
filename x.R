@@ -1,6 +1,6 @@
 ## Import
 side <- "wta"
-Data <- import(2012:2015, side)
+Data <- import(2012:2016, side)
 df <- Data$Data
 y <- df$Wsets
 ns <- df$Wsets + df$Lsets

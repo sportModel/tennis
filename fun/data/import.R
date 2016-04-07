@@ -1,7 +1,14 @@
 import <- function(year, set=c("atp", "wta")) {
   Data <- NULL
   for (i in 1:length(year)) {
-    Data.i <- read.csv(paste0("data/", set, "/", year[i], ".csv"), stringsAsFactors=FALSE)
+    f1 <- paste0("data/", set, "/", year[i], ".csv")
+    f2 <- paste0("data/", set, "/", year[i], ".xlsx")
+    if (file.exists(f1)) {
+      Data.i <- read.csv(f1, stringsAsFactors=FALSE)
+    } else {
+      require(readxl)
+      Data.i <- read_excel(f2)
+    }
     names(Data.i)[grep("Best", names(Data.i))] <- "BestOf"
     Data.i <- Data.i[,!(names(Data.i) %in% c("SJW", "SJL"))]
     Data <- rbind(Data, Data.i)
