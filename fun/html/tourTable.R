@@ -11,7 +11,7 @@ tourTable <- function(res, name) {
     }
   }
   colnames(Tab)[(d-3):d] <- c("Quarterfinal", "Semifinal", "Final", "Winner")
-  colnames(Tab)[1:(d-4)] <- paste0("R", n/2^(1:(d-4)-1))
+  colnames(Tab)[1:(d-4)] <- paste0("R", n/2^(1:(d-4)))
   Tab <- Tab[order(Tab[,"Winner"], decreasing=TRUE),]
   Tab <- Tab[!(substr(rownames(Tab), 1, 3)=="NA "),]
   print(htmlTable(Tab, class="\"sortable ctable\""), name=name)
