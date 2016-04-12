@@ -2,14 +2,16 @@
 title:  Monte Carlo field set
 ---
 
-The field is set for Monte Carlo 2016.  A fairly tough draw for Novak Djokovic,
-as he ends up in the same half as Roger Federer (tough draw for Federer too, of
-course), meaning that he will likely have to defeat both Federer and Murray for
-the title.  He's still the favorite, certainly, but Federer and Murray have a
-better combined shot at the title (55%) than Djokovic (41%).  Everyone else is a
-major dark horse.
+The clay court season rolls out in earnest this week with the Monte Carlo
+Masters event.  Djokovic is the favorite, obviously, with about a 50% chance of
+winning.  The rest of the field is about an even split between Murray, Federer,
+and Nadal, with Djokovic/Federer in one half and Murray/Nadal in the other.
 
-In other news, rising star David Goffin (+0.9 over the last year) has a very
-tough first round matchup against Feliciano Lopez, although if he can get past the first round, has a good shot of facing Djokovic in the quarters.
+The number one storyline going into the clay court season this year is probably
+whether Rafael Nadal can return to top form after failing to win a single major
+tournament last year.  Currently, our approach estimates that he is still a
+legitimate member of the Big Four on clay, but not on any other surface, and
+even on clay would only be a 50-50 proposition against Federer (that feels weird
+to write).  Let's see if he rebounds.
 
 {% include_relative tab/montecarlo2016a.html %}
