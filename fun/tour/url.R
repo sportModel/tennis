@@ -13,13 +13,30 @@ fixName <- function(x) {
   y
 }
 
-urlTour <- function(url, surface="Hard", sets=5, just.bracket=FALSE) {
+urlTour <- function(url, surface="Hard", sets=5, just.bracket=FALSE, roundID) {
   require(XML)
   p <- NULL
   for (i in 1:length(url)) {
     tab <- readHTMLTable(url[i], header=FALSE, stringsAsFactors=FALSE)
     if (length(tab)==35) {
-      tab <- tab[-(1:3)]
+      if (missing(roundID)) {
+        tab <- tab[-(1:3)]
+      } else {
+        raw <- tab$scoresDrawTable[,roundID]
+        raw <- raw[grep("H2H", raw)]
+        raw <- gsub("\\r", "", raw)
+        raw <- gsub("\\n", "", raw)
+        raw <- gsub("\\t", "", raw)
+        raw <- gsub("H2H", "", raw)
+        raw <- gsub("[[:digit:]]+", "", raw)
+        raw <- trimws(raw)
+        n <- length(raw)/2
+        tab <- vector("list", n)
+        for (i in 1:n) {
+          tab[[i]] <- matrix("NA", 3, 2)
+          tab[[i]][c(1,3),1] <- raw[1:2 + (i-1)*2]
+        }
+      }
     }
     n <- length(tab)
     P <- matrix("", 2, n)
