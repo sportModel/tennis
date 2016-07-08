@@ -18,15 +18,12 @@ y <- df$Wsets
 ns <- df$Wsets + df$Lsets
 nm <- nrow(df)
 np <- length(Data$PlayerID)
+prior <- makePrior(Data$PlayerID, side, year)
 
-# Load prior
-load(paste0("psm/", side, "/", year-1, ".RData"))
-
-## Fit setup
+# Fit setup
 jData <- with(Data, list(
-  Winner=Winner, Loser=Loser, Surface=Surface, Time=Time, T=max(Time), y=y, ns=ns, nm=nm, np=np,
-  rss=rep(2,3), tdf=rep(1,3), muEta=Eta[,ncol(Eta)], muAlpha))
-#  rss=rss, n=n))
+  Winner=Winner, Loser=Loser, Surface=Surface, Time=Time, T=max(Time), y=y, ns=ns, nm=nm, np=np))
+jData <- c(jData, prior)
 monitor <- c("eta", "alpha", "tau")
 FUN <- function(chain) {list(eta=matrix(rnorm(np*max(Data$Time)), nrow=np), alpha=matrix(rnorm(np*3), nrow=np))}
 inits <- mapply(FUN, 1:3, SIMPLIFY=FALSE)
