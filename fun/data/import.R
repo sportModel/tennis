@@ -1,13 +1,13 @@
-import <- function(year, set=c("atp", "wta")) {
+import <- function(year, side=c("atp", "wta")) {
   Data <- NULL
   for (i in 1:length(year)) {
-    f1 <- paste0("data/", set, "/", year[i], ".csv")
-    f2 <- paste0("data/", set, "/", year[i], ".xlsx")
+    f1 <- paste0("data/", side, "/", year[i], ".csv")
+    f2 <- paste0("data/", side, "/", year[i], ".xlsx")
     if (file.exists(f1)) {
       Data.i <- read.csv(f1, stringsAsFactors=FALSE)
     } else {
       require(readxl)
-      Data.i <- read_excel(f2)
+      Data.i <- read_excel(f2, na="N/A")
     }
     names(Data.i)[grep("Best", names(Data.i))] <- "BestOf"
     Data.i <- Data.i[,!(names(Data.i) %in% c("SJW", "SJL"))]
@@ -19,11 +19,12 @@ import <- function(year, set=c("atp", "wta")) {
   Data$Loser <- FixName(Data$Loser)
 
   PlayerID <- unique(c(Data$Winner, Data$Loser))
-  SurfaceID <- unique(Data$Surface)
+  #SurfaceID <- unique(Data$Surface)
+  SurfaceID <- c("Hard", "Clay", "Grass")
   Winner <- match(Data$Winner, PlayerID)
   Loser <- match(Data$Loser, PlayerID)
   Surface <- match(Data$Surface, SurfaceID)
-  require(lubridate)
+  suppressMessages(require(lubridate))
   Date <- parse_date_time(Data$Date, orders=c("ymd", "mdy"))
   monthChar <- month(Date)
   monthChar[nchar(monthChar)==1] <- paste0("0", monthChar[nchar(monthChar)==1])

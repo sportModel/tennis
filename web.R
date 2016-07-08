@@ -1,9 +1,7 @@
 require(html)
 
-load("psm/atp.RData")
-atp <- list(Delta=Delta, Alpha=Alpha, Eta=Eta)
+atp <- loadPosterior("atp", 2016)
 top(atp, "tab/atp")
 
-load("psm/wta.RData")
-wta <- list(Delta=Delta, Alpha=Alpha, Eta=Eta)
+wta <- loadPosterior("wta", 2016)
 top(wta, "tab/wta")

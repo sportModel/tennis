@@ -18,7 +18,7 @@ urlTour <- function(url, surface="Hard", sets=5, just.bracket=FALSE, roundID) {
   p <- NULL
   for (i in 1:length(url)) {
     tab <- readHTMLTable(url[i], header=FALSE, stringsAsFactors=FALSE)
-    if (length(tab)==35) {
+    if (grepl("atpworldtour.com", url)) {
       if (missing(roundID)) {
         tab <- tab[-(1:3)]
       } else {
