@@ -32,6 +32,7 @@ urlATP <- function(tab, roundID) {
   }
   n <- length(tab)
   P <- matrix("", 2, n)
+  p <- NULL
   for (j in 1:n) {
     if (all(dim(tab[[j]]) == 2:3)) {
       tmp <- matrix(NA, 3, 2)
@@ -39,11 +40,9 @@ urlATP <- function(tab, roundID) {
       tmp[3,1] <- tab[[j]][2,3]
       tab[[j]] <- tmp
     }
-    name <- tab[[j]][c(1,3),1]
-    P[,j] <- fixName(name)
+    p <- c(p, tab[[j]][c(1,3),1])
   }
-  p <- c(p, as.character(P))
-  p <- p[p!= ' U.']
+  p
 }
 urlPDF <- function(url, roundID) {
   tf <- tempfile()
