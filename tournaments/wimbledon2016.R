@@ -4,6 +4,7 @@ require(html)
 
 load("psm/atp/2016.RData")
 url <- "http://www.atpworldtour.com/en/scores/current/wimbledon/540/draws"
+url <- "http://www.atpworldtour.com/en/scores/archive/wimbledon/540/2016/draws"
 
 # Start of tournament
 res <- urlTour(url, "Grass", sets=5)

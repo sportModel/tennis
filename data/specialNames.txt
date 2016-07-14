@@ -1,26 +1,33 @@
-A.Pavlyuchenkova	Pavlyuchenkova A.	
-Karolina Pliskova	Pliskova Ka.	
-Silvia Soler-Espinosa	Soler Espinosa S.	
-Alison Van Uytvanck	Van Uytvanck A.	
-Kimiko Date-Krumm	Date Krumm K.	
-B.Zahlavova Strycova	Zahlavova Strycova B.	
-Kai-Chen Chang	Chang K.C.	
-Mirjana Lucic-Baroni	Lucic M.	
-Maria Torro-Flor	Torro Flor M.T.	
-An-Sophie Mestach	Mestach A.S.	
-Ying-Ying Duan	Duan Y.Y.	
-Anna-Lena Friedsam	Friedsam A.L.	
-Carla Suarez Navarro	Suarez Navarro C.	
-Arina Rodionova	Rodionova Ar.	
-Pablo Carreno Busta	Carreno-Busta P.	
-Alexandr Dolgopolov	Dolgopolov O.	Fix
-Victor Estrella Burgos	Estrella Burgos V.	
-Paul-Henri Mathieu	Mathieu P.H.	
-Kenny De Schepper	De Schepper K.	
-Jan-Lennard Struff	Struff J.L.	
-Yen-Hsun Lu	Lu Y.H.	
-Jo-Wilfried Tsonga	Tsonga J.W.	
-Pierre-Hugues Herbert	Herbert P.H.	
-Mariana Duque-Marino	Duque Marino M.	
-Lourdes Dominguez Lino	Dominguez Lino L.	
-A.Schmiedlova	Schmiedlova A.	
+Pablo Carreno Busta	Carreno-Busta P.
+Kenny De Schepper	De Schepper K.
+Juan Martin del Potro	Del Potro J.M.
+Rogerio Dutra Silva	Dutra Silva R.
+Victor Estrella Burgos	Estrella Burgos V.
+Pierre-Hugues Herbert	Herbert P.H.
+Andrey Kuznetsov	Kuznetsov An.
+Yen-Hsun Lu	Lu Y.H.
+Paul-Henri Mathieu	Mathieu P.H.
+Jan-Lennard Struff	Struff J.L.
+Jo-Wilfried Tsonga	Tsonga J.W.
+Kai-Chen Chang	Chang K.C.
+Kimiko Date-Krumm	Date Krumm K.
+Lourdes Dominguez Lino	Dominguez Lino L.
+Ying-Ying Duan	Duan Y.Y.
+Mariana Duque-Marino	Duque Marino M.
+Anna-Lena Friedsam	Friedsam A.L.
+Su-Wei Hsieh	Hsieh S.W.
+Mirjana Lucic-Baroni	Lucic M.
+Christina Mchale	McHale C.
+An-Sophie Mestach	Mestach A.S.
+A.Pavlyuchenkova	Pavlyuchenkova A.
+Karolina Pliskova	Pliskova Ka.
+Kristyna Pliskova	Pliskova Kr.
+Arina Rodionova	Rodionova Ar.
+Anna Karolina Schmiedlova	Schmiedlova A.
+A.Schmiedlova	Schmiedlova A.
+Silvia Soler-Espinosa	Soler Espinosa S.
+B.Zahlavova Strycova	Strycova B.
+Carla Suarez Navarro	Suarez Navarro C.
+Patricia Maria Tig	Tig P.M.
+Maria Torro-Flor	Torro Flor M.T.
+Alison Van Uytvanck	Van Uytvanck A.
