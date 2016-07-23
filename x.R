@@ -44,7 +44,7 @@ head(Alpha[order(Delta, decreasing=TRUE),], 10)
 ## Time series
 X <- Eta[head(order(Delta, decreasing=TRUE), 10), ]
 X <- Eta[c("Nadal R.", "Djokovic N.", "Murray A.", "Federer R."), ]
-x <- as.Date(ymd(paste0(Data$TimeID, "-01")))
+x <- as.Date(paste0(colnames(Eta), "-01"))
 matplot(x, t(X), type="l", lty=1, lwd=3, col=pal(nrow(X)), las=1, xaxt="n")
 axis.Date(1, x=x)
 toplegend(legend=rownames(X), col=pal(nrow(X)), lwd=3)

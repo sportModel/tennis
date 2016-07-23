@@ -1,16 +1,16 @@
-urlTour <- function(url, surface="Hard", sets=5, just.bracket=FALSE, roundID) {
+urlTour <- function(url, surface="Hard", sets=5, just.bracket=FALSE, roundID, ...) {
   suppressMessages(require(XML))
   p <- NULL
   if (grepl("atpworldtour.com", url)) {
     p <- urlATP(url, roundID)
   } else if (grepl("MDS.pdf", url)) {
-    p <- urlPDF(url, roundID)
+    p <- urlPDF(url, roundID, ...)
   }
   p <- fixName(p)
   if (just.bracket) return(p)
   predictTour(p, surface, Delta, Alpha, sets=sets)
 }
-urlATP <- function(tab, roundID) {
+urlATP <- function(url, roundID) {
   tab <- readHTMLTable(url, header=FALSE, stringsAsFactors=FALSE)
   if (missing(roundID)) {
     tab <- tab[-(1:3)]
@@ -44,27 +44,44 @@ urlATP <- function(tab, roundID) {
   }
   p
 }
-urlPDF <- function(url, roundID) {
+urlPDF <- function(url, roundID, lines) {
   tf <- tempfile()
   PDF <- paste0(tf, ".pdf")
   TXT <- paste0(tf, ".txt")
   system(paste("wget", url, "-O", PDF))
   system(paste("pdftotext", PDF))
   raw <- readLines(TXT)
-  ind <- grep("Round 1", raw)
-  p <- NULL
-  for (i in 1:length(ind)) {
-    nextBlank <- which(raw[-(1:ind[i])]=="")[1]
-    tmp <- raw[(ind[i]+1):(ind[i]+nextBlank-1)]
+  if (!missing(lines)) {
+    tmp <- raw[lines]
+    tmp <- gsub("BYE", "BYE, B", tmp)
+    tmp <- gsub("QUALIFIER", "QUALIFIER, Q", tmp)
     X <- matrix(unlist(strsplit(tmp, ",")), byrow=TRUE, ncol=2)
-    X[,1] <- splitright(X[,1], "\\.")
+    #X[,1] <- splitright(X[,1], "\\.")
     X[,1] <- trimws(sapply(X[,1], capwords))
     X[,2] <- gsub("\\..*", "", X[,2])
     X[,2] <- gsub("\\[", "", X[,2])
     X[,2] <- gsub("\\]", "", X[,2])
     X[,2] <- gsub("[[:digit:]]+", "", X[,2])
     X[,2] <- trimws(X[,2])
-    p <- c(p, apply(X[,2:1], 1, paste, collapse=" "))
+    p <- apply(X[,2:1], 1, paste, collapse=" ")
+    p <- gsub("B Bye", "Bye", p)
+    p <- gsub("Q Qualifier", "Qualifier", p)
+  } else {
+    ind <- grep("Round 1", raw)
+    p <- NULL
+    for (i in 1:length(ind)) {
+      nextBlank <- which(raw[-(1:ind[i])]=="")[1]
+      tmp <- raw[(ind[i]+1):(ind[i]+nextBlank-1)]
+      X <- matrix(unlist(strsplit(tmp, ",")), byrow=TRUE, ncol=2)
+      X[,1] <- splitright(X[,1], "\\.")
+      X[,1] <- trimws(sapply(X[,1], capwords))
+      X[,2] <- gsub("\\..*", "", X[,2])
+      X[,2] <- gsub("\\[", "", X[,2])
+      X[,2] <- gsub("\\]", "", X[,2])
+      X[,2] <- gsub("[[:digit:]]+", "", X[,2])
+      X[,2] <- trimws(X[,2])
+      p <- c(p, apply(X[,2:1], 1, paste, collapse=" "))
+    }
   }
   p
 }
