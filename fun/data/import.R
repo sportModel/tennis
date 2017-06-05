@@ -2,12 +2,14 @@ import <- function(year, side=c("atp", "wta")) {
   Data <- NULL
   for (i in 1:length(year)) {
     f1 <- paste0("data/", side, "/", year[i], ".csv")
-    f2 <- paste0("data/", side, "/", year[i], ".xlsx")
+    f2 <- paste0("data/", side, "/", year[i], ".xls")
+    f3 <- paste0("data/", side, "/", year[i], ".xlsx")
     if (file.exists(f1)) {
       Data.i <- read.csv(f1, stringsAsFactors=FALSE)
-    } else {
-      require(readxl)
-      Data.i <- read_excel(f2, na="N/A")
+    } else if (file.exists(f2)) {
+      Data.i <- readxl::read_excel(f2, na="", sheet=2)
+    } else if (file.exists(f3)) {
+      Data.i <- readxl::read_excel(f3, na="N/A")
     }
     names(Data.i)[grep("Best", names(Data.i))] <- "BestOf"
     Data.i <- Data.i[,!(names(Data.i) %in% c("SJW", "SJL"))]

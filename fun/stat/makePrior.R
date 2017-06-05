@@ -1,5 +1,13 @@
 makePrior <- function(ID, side, year) {
-  load(paste0("psm/", side, "/", year-1, ".RData"))
+  f <- paste0("psm/", side, "/", year-1, ".RData")
+  if (file.exists(f)) {
+    load(f)
+  } else {
+    Eta <- sdEta <- matrix(NA, ncol=3)
+    Alpha <- sdAlpha <- matrix(NA, ncol=2)
+    rss <- 10
+    tdf <- 1
+  }
   ind <- match(ID, rownames(Eta))
   new <- is.na(ind)
   muEta <- Eta[ind, ncol(Eta)]
