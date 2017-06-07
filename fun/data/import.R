@@ -7,16 +7,16 @@ import <- function(year, side=c("atp", "wta")) {
     if (file.exists(f1)) {
       Data.i <- read.csv(f1, stringsAsFactors=FALSE)
     } else if (file.exists(f2)) {
-      Data.i <- readxl::read_excel(f2, na="", sheet=2)
+      Data.i <- readxl::read_excel(f2, sheet=2, na = c("", "N/A", "NA"))
     } else if (file.exists(f3)) {
-      Data.i <- readxl::read_excel(f3, na="N/A")
+      Data.i <- readxl::read_excel(f3, sheet=2, na = c("", "N/A", "NA"))
     }
     names(Data.i)[grep("Best", names(Data.i))] <- "BestOf"
-    Data.i <- Data.i[,!(names(Data.i) %in% c("SJW", "SJL"))]
     Data <- rbind(Data, Data.i)
   }
 
-  Data <- subset(Data, !is.na(Data$Wsets))
+  #Data <- Data[!is.na(Wsets)]
+  Data <- subset(Data, !is.na(Wsets))
   Data$Winner <- FixName(Data$Winner)
   Data$Loser <- FixName(Data$Loser)
 

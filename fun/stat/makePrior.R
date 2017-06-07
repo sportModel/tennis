@@ -4,9 +4,9 @@ makePrior <- function(ID, side, year) {
     load(f)
   } else {
     Eta <- sdEta <- matrix(NA, ncol=3)
-    Alpha <- sdAlpha <- matrix(NA, ncol=2)
-    rss <- 10
-    tdf <- 1
+    Alpha <- sdAlpha <- matrix(NA, ncol=3)
+    rss <- rep(10, 3)
+    tdf <- rep(1, 3)
   }
   ind <- match(ID, rownames(Eta))
   new <- is.na(ind)
