@@ -9,14 +9,15 @@ import <- function(year, side=c("atp", "wta")) {
     } else if (file.exists(f2)) {
       Data.i <- readxl::read_excel(f2, sheet=2, na = c("", "N/A", "NA"))
     } else if (file.exists(f3)) {
-      Data.i <- readxl::read_excel(f3, sheet=2, na = c("", "N/A", "NA"))
+      Data.i <- readxl::read_excel(f3, na = c("", "N/A", "NA"))
     }
     names(Data.i)[grep("Best", names(Data.i))] <- "BestOf"
+    Data.i <- Data.i[, c("Wsets", "Lsets", "Winner", "Loser", "Surface", "Date")]
     Data <- rbind(Data, Data.i)
   }
 
   #Data <- Data[!is.na(Wsets)]
-  Data <- subset(Data, !is.na(Wsets))
+  Data <- subset(Data, !is.na(Wsets) & !is.na(Lsets))
   Data$Winner <- FixName(Data$Winner)
   Data$Loser <- FixName(Data$Loser)
 
