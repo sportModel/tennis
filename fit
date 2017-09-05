@@ -7,7 +7,7 @@ suppressMessages(library(docopt))
 -h        Show this help screen" -> doc
 opt <- docopt(doc)
 side <- opt$side
-year <- as.numeric(opt$year)
+year <- as.numeric(eval(parse(text=opt$year)))
 # side <- "atp"
 # year <- 2017
 

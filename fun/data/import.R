@@ -5,11 +5,14 @@ import <- function(year, side=c("atp", "wta")) {
     f2 <- paste0("data/", side, "/", year[i], ".xls")
     f3 <- paste0("data/", side, "/", year[i], ".xlsx")
     if (file.exists(f1)) {
-      Data.i <- read.csv(f1, stringsAsFactors=FALSE)
+      Data.i <- suppressMessages(readr::read_csv(f1, na = c("", "N/A", "NA")))
     } else if (file.exists(f2)) {
       Data.i <- readxl::read_excel(f2, sheet=2, na = c("", "N/A", "NA"))
     } else if (file.exists(f3)) {
       Data.i <- readxl::read_excel(f3, na = c("", "N/A", "NA"))
+    }
+    if (class(Data.i$Date)[1] == 'character') {
+      Data.i$Date <- lubridate::parse_date_time(Data.i$Date, orders=c("ymd", "mdy"))
     }
     names(Data.i)[grep("Best", names(Data.i))] <- "BestOf"
     Data.i <- Data.i[, c("Wsets", "Lsets", "Winner", "Loser", "Surface", "Date")]
@@ -27,11 +30,9 @@ import <- function(year, side=c("atp", "wta")) {
   Winner <- match(Data$Winner, PlayerID)
   Loser <- match(Data$Loser, PlayerID)
   Surface <- match(Data$Surface, SurfaceID)
-  suppressMessages(require(lubridate))
-  Date <- parse_date_time(Data$Date, orders=c("ymd", "mdy"))
-  monthChar <- month(Date)
+  monthChar <- month(Data$Date)
   monthChar[nchar(monthChar)==1] <- paste0("0", monthChar[nchar(monthChar)==1])
-  TimeFactor <- as.factor(paste(year(Date), monthChar, sep="-"))
+  TimeFactor <- as.factor(paste(year(Data$Date), monthChar, sep="-"))
   Time <- as.numeric(TimeFactor)
   TimeID <- levels(TimeFactor)
   list(Data=Data, PlayerID=PlayerID, SurfaceID=SurfaceID, TimeID=TimeID, Winner=Winner, Loser=Loser, Surface=Surface, Time=Time)

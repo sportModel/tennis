@@ -1,5 +1,5 @@
 makePrior <- function(ID, side, year) {
-  f <- paste0("psm/", side, "/", year-1, ".RData")
+  f <- paste0("psm/", side, "/", min(year)-1, ".RData")
   if (file.exists(f)) {
     load(f)
   } else {
