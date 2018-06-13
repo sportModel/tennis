@@ -1,5 +1,5 @@
+data/atp/*.csv
+data/wta/*.csv
 web
 !_config.yml
 !*.css
-!fit
-!getdata
